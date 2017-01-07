@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html ng-app="cerebro">
+<head>
+<title>List Practice</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/cerebro.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/cerebro.js"></script>
+</head>
+<body ng-controller="cerebroController">
+
+<!-- Top Navigation bar -->
+<div ng-include=" 'topNavigation.html' " id="0"></div>
+
+<!-- Body Content -->
+<div class="container" style="margin-top:25px;">
+
+<div class="page-header">
+    <h3>List</h3>      
+</div>
+
+	<div class="panel panel-primary"><div class="panel-heading">Topics</div><div class="panel-body">
+	<ul>
+		<li><a ng-click="navigate(1)">Split List into sub lists of specified size</a></li>
+		<li><a ng-click="navigate(2)">Convert Array to List</a></li>
+		<li><a ng-click="navigate(3)">Convert List to Array</a></li>
+		<li><a ng-click="navigate(4)">Convert List to Comma Separated String</a></li>
+	</ul>
+	</div></div>
+
+<div class="panel panel-primary" id="1"><div class="panel-heading">Split List into sub lists of specified size</div><div class="panel-body">
+<pre><code>
+public static void main(String[] args) {
+	ListPractice listPractice = new ListPractice();
+	List&lt;Integer&gt; srcList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	System.out.println(listPractice.splitList(srcList, 2));
+	System.out.println(listPractice.splitList(srcList, 3));
+	System.out.println(listPractice.splitList(srcList, 4));
+	System.out.println(listPractice.splitList(srcList, 5));
+	System.out.println(listPractice.splitList(srcList, 10));
+	System.out.println(listPractice.splitList(srcList, 15));
+    }
+</code></pre>
+<pre ><code>
+public &lt;T&gt; List&lt;List&lt;T&gt;&gt; splitList(List&lt;T&gt; srcList, final int lengthOfSubList) {
+	List&lt;List&lt;T&gt;&gt; splits = new ArrayList&lt;&gt;();
+	final int size = srcList.size();
+	for (int i = 0; i &lt; size; i = i + lengthOfSubList) {
+    	  splits.add(new ArrayList&lt;T&gt;(srcList.subList(i, Math.min(size, i + lengthOfSubList))));
+	}
+	return splits;
+   }
+</code>	</pre>
+<h4 class="output">Output</h4>
+<pre><code>
+[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10]]
+[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="2"><div class="panel-heading" >Convert Array to List</div><div class="panel-body">
+  	<pre ><code>
+  	public void convertArrayToList() {
+	String[] stringArray = new String[] { &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot; };
+
+	<em>// method 1</em>
+	List&lt;String&gt; stringList = Arrays.asList(stringArray);
+	System.out.println(&quot;stringList: &quot; + stringList);
+
+	<em>// method 2</em>
+	List&lt;String&gt; stringList2 = new ArrayList&lt;&gt;(Arrays.asList(stringArray));
+	System.out.println(&quot;stringList2: &quot; + stringList2);
+
+	<em>// method 3</em>
+	int[] numbersArray1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	List&lt;Integer&gt; numbersList1 = new ArrayList&lt;&gt;();
+	for (int number : numbersArray1) {
+	    numbersList1.add(number);
+	}
+	System.out.println(&quot;numbersList1: &quot; + numbersList1);
+	
+	<em>// method 4</em>
+	Integer[] numbersArray3 = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	List&lt;Integer&gt; numbersList3 = Arrays.asList(numbersArray3);
+	System.out.println(&quot;numbersList3: &quot; + numbersList3);
+
+	<em>// from java 8</em>
+	int[] numbersArray2 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	List&lt;Integer&gt; numbersList2 = Arrays.stream(numbersArray2).boxed().collect(Collectors.toList());
+	System.out.println(&quot;numbersList2: &quot; + numbersList2);
+
+    }
+</code>	</pre>
+<pre><code>
+stringList: [A, B, C, D]
+stringList2: [A, B, C, D]
+numbersList1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbersList2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbersList3: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="3"><div class="panel-heading" >Convert List to Array</div><div class="panel-body">
+  <pre><code>
+ public void convertListToArray() {
+	List&lt;String&gt; list1 = new ArrayList&lt;&gt;();
+	list1.add(&quot;A&quot;);
+	list1.add(&quot;B&quot;);
+	list1.add(&quot;C&quot;);
+	System.out.println(&quot;list1: &quot; + list1);
+
+	String[] list1Array = list1.toArray(new String[list1.size()]);
+	for (String value : list1Array) {
+	    System.out.print(value + &quot;,&quot;);
+	}
+    }
+</code></pre>
+<pre><code>
+list1: [A, B, C]
+A
+B
+C
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="4"><div class="panel-heading" >Convert List to Comma Separated String</div><div class="panel-body">
+  	<pre><code>
+  public void convertListToCommaSeparatedString() {
+	List&lt;String&gt; list = Arrays.asList(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;);
+
+	<em>//method 1</em>
+	StringBuffer listToString1 = new StringBuffer(list.toString());
+	listToString1.deleteCharAt(0);
+	listToString1.deleteCharAt(listToString1.length() - 1);
+	String destString = listToString1.toString().replace(&quot; &quot;, &quot;&quot;);
+	System.out.println(&quot;listToString1: &quot; + destString);
+
+	<em>// method 2</em>
+	Iterator&lt;String&gt; iterator = list.iterator();
+	StringBuffer listToString2 = new StringBuffer();
+	for (;;) {
+	    listToString2.append(iterator.next());
+	    if (!iterator.hasNext())
+		break;
+	    listToString2.append(&quot;,&quot;);
+	}
+	System.out.println(&quot;listToString2: &quot; + listToString2);
+
+	<em>// method 3</em>
+	StringBuffer listToString3 = new StringBuffer(&quot;[&quot;);
+	for (Iterator&lt;String&gt; iterator2 = list.iterator(); iterator2.hasNext();) {
+	    listToString3.append(iterator2.next());
+	    if (iterator2.hasNext()) {
+		listToString3.append(&quot;,&quot;);
+	    }
+	}
+	listToString3.append(&quot;]&quot;);
+	System.out.println(&quot;listToString3: &quot; + listToString3.toString());
+    }
+</code></pre>
+<pre><code>
+listToString1: A,B,C,D,E
+listToString2: A,B,C,D,E
+listToString3: [A,B,C,D,E]
+</code></pre>
+</div></div>
+
+</div>
+
+</body>
+</html>

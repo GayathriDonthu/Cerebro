@@ -1,0 +1,17 @@
+.output{
+	font-weight: bold;
+	font-style: italic;
+}
+
+em{
+	color: green;
+	font-weight: bold;
+}
+
+.topics{
+	border: 1px solid #566573;
+}
+
+a{
+	cursor: pointer;
+}
