@@ -1,17 +1,17 @@
-.output{
-	font-weight: bold;
-	font-style: italic;
-}
-
+/* Element styles */
 em{
 	color: green;
 	font-weight: bold;
 }
 
-.topics{
-	border: 1px solid #566573;
-}
-
 a{
 	cursor: pointer;
 }
+
+/* class styles */
+.output{
+	font-weight: bold;
+	font-style: italic;
+}
+
+/* id styles */
