@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="cerebro">
 <head>
-<title>String</title>
+<title>Cerebro</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/cerebro.css">
@@ -22,13 +22,18 @@
 <div class="page-header">
     <h3>Annotations</h3>      
 </div>
+
+<ul class="pager">
+  <li><a href="collections.html">Previous</a></li>
+  <li><a href="">Next</a></li>
+</ul>
   	
 <div class="panel panel-primary"><div class="panel-heading">Topics</div><div class="panel-body">
 	<ul>
 		<li><a ng-click="navigate(1)">class Level Annotations</a></li>
 		<li><a ng-click="navigate(2)">Field Level Annotations</a></li>
-		<li><a ng-click="navigate(2)">Method Level Annotations</a></li>
-		<li><a ng-click="navigate(2)">Parameter Level Annotations</a></li>
+		<li><a ng-click="navigate(3)">Method Level Annotations</a></li>
+		<li><a ng-click="navigate(4)">Parameter Level Annotations</a></li>
 	</ul>
 </div></div>
 	
@@ -103,7 +108,7 @@ class default string value
 </code></pre>
 </div></div>
 
-<div class="panel panel-primary" id="1"><div class="panel-heading">Field Level Annotations</div><div class="panel-body">
+<div class="panel panel-primary" id="2"><div class="panel-heading">Field Level Annotations</div><div class="panel-body">
 <pre><code>
 package core.java.annotations.model;
 
@@ -179,7 +184,7 @@ value1, value2
 </code></pre>
 </div></div>
 
-<div class="panel panel-primary" id="1"><div class="panel-heading">Method Level Annotations</div><div class="panel-body">
+<div class="panel panel-primary" id="3"><div class="panel-heading">Method Level Annotations</div><div class="panel-body">
 <pre><code>
 package core.java.annotations.model;
 
@@ -251,7 +256,7 @@ method level annotation string vlaue
 </code></pre>
 </div></div>
 
-<div class="panel panel-primary" id="1"><div class="panel-heading">Parameter Level Annotations</div><div class="panel-body">
+<div class="panel panel-primary" id="4"><div class="panel-heading">Parameter Level Annotations</div><div class="panel-body">
 <pre><code>
 package core.java.annotations.model;
 

@@ -64,7 +64,7 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<configuration>
-						<mainClass>springboot.hello.world.HelloWorldApp</mainClass>
+						<mainClass>com.cerebro.CerebroApp</mainClass>
 					</configuration>
 				</plugin>
 			</plugins>
