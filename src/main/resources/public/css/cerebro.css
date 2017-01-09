@@ -9,7 +9,7 @@ a{
 }
 
 /* class styles */
-.output{
+.output , .contentHeading {
 	font-weight: bold;
 	font-style: italic;
 }

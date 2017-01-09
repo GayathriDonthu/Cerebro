@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="cerebro">
+<head>
+<title>Cerebro</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/cerebro.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/cerebro.js"></script>
+</head>
+<body ng-controller="cerebroController">
+
+<!-- Top Navigation bar -->
+<div ng-include=" 'topNavigation.html' " id="0"></div>
+
+<!-- Body Content -->
+<div class="container" style="margin-top:25px">
+
+<div class="page-header">
+    <h3>Hibernate 5 Hello World</h3>      
+  </div>
+
+<!-- Pagination -->
+<ul class="pager">
+  <li><a ng-href="hibernate.html">Previous</a></li>
+  <li><a ng-href="hibernate.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+  <li><a ng-href="#">Next</a></li>
+</ul>
+	
+<div class="panel panel-primary" id="1"><div class="panel-heading">Hibernate 5 Hello World</div><div class="panel-body">
+<h4 class="contentHeading">Create a pom project using following command:</h4>
+<pre ><code>
+C:>mvn archetype:generate -DgroupId=com.hibernate5.example -DartifactId=Hibernate5Example -Dversion=1.0 
+	-DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</code></pre>
+<h4 class="contentHeading">Project Structure:</h4><p/>
+<p><img ng-src="images/hibernate/hibernate5HelloWorld.jpg" title="Hibernate 5 Hello World"/></p>
+<h4 class="contentHeading">pom.xml</h4>
+<pre><code>
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;hibernate.example&lt;/groupId&gt;
+  &lt;artifactId&gt;HibernateExample5&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;name&gt;HibernateExample5&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    
+    &lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;5.1.0.Final&lt;/version&gt;
+&lt;/dependency&gt;
+
+  &lt;/dependencies&gt;
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.3.1&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<h4 class="contentHeading">h2.hibernate.cfg.xml</h4>
+<pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; 
+&lt;!DOCTYPE hibernate-configuration SYSTEM &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt; 
+&lt;hibernate-configuration&gt; 
+	&lt;session-factory&gt; 
+		&lt;property name=&quot;hibernate.dialect&quot;&gt; org.hibernate.dialect.H2Dialect&lt;/property&gt; 
+		&lt;property name=&quot;hibernate.connection.driver_class&quot;&gt; org.h2.Driver&lt;/property&gt;
+		&lt;!-- url to create db in user home directory --&gt;
+		&lt;property name=&quot;hibernate.connection.url&quot;&gt; jdbc:h2:~/test;MV_STORE=FALSE&lt;/property&gt;
+		&lt;property name=&quot;hibernate.connection.username&quot;&gt; test &lt;/property&gt; 
+		&lt;property name=&quot;hibernate.connection.password&quot;&gt; test &lt;/property&gt; 
+		&lt;property name=&quot;hibernate.show_sql&quot;&gt;true&lt;/property&gt;
+		&lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
+		
+		&lt;mapping class=&quot;com.hibernate.example.Employee&quot;/&gt;
+	&lt;/session-factory&gt; 
+&lt;/hibernate-configuration&gt;
+</code></pre>
+<h4 class="contentHeading">Employee.java</h4>
+<pre><code>
+package com.hibernate.example;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table
+@Entity(name = &quot;EMPLOYEE&quot;)
+public class Employee {
+
+	private Long	id;
+	private String	name;
+	private String	designation;
+
+	@Id
+	@Column(name = &quot;ID&quot;)
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Column(name = &quot;NAME&quot;)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = &quot;DESIGNATION&quot;)
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+}
+</code></pre>
+<h4 class="contentHeading">Test class:</h4>
+<pre><code>
+package com.hibernate.example;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateExample {
+
+	public static void main(String[] args) {
+		new HibernateExample().getEmployees();
+	}
+
+	public void insert() {
+		Employee employee = new Employee();
+		employee.setId(1L);
+		employee.setName(&quot;john&quot;);
+		employee.setDesignation(&quot;SSE&quot;);
+		Configuration configuration = new Configuration().configure(&quot;h2.hibernate.cfg.xml&quot;);
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(employee);
+		session.getTransaction().commit();
+
+		session.close();
+	}
+
+	public void getEmployees() {
+		Configuration configuration = new Configuration().configure(&quot;h2.hibernate.cfg.xml&quot;);
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		Employee employee = (Employee) session.get(Employee.class, 1L);
+		System.out.println(employee);
+		session.close();
+	}
+}
+</code></pre>
+</div></div>
+
+</div>
+</body></html>
