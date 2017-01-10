@@ -7,10 +7,6 @@
 	<name>Cerebro</name>
 	<url>http://maven.apache.org</url>
 
-	<properties>
-		<junit.version>4.12</junit.version>
-	</properties>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
