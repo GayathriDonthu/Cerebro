@@ -35,6 +35,7 @@
 		<li><a ng-click="navigate(2)">Convert Array to List</a></li>
 		<li><a ng-click="navigate(3)">Convert List to Array</a></li>
 		<li><a ng-click="navigate(4)">Convert List to Comma Separated String</a></li>
+		<li><a ng-click="navigate(5)">Remove all nulls from list</a></li>
 	</ul>
 	</div></div>
 
@@ -182,6 +183,31 @@ listToString3: [A,B,C,D,E]
 </code></pre>
 </div></div>
 
+<div class="panel panel-primary" id="5"><div class="panel-heading" >Remove all nulls from list</div><div class="panel-body">
+  	<pre><code>
+public void removeAllNullsFromList() {
+	List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	list.add(&quot;a&quot;);
+	list.add(null);
+	list.add(&quot;b&quot;);
+	list.add(null);
+	list.add(&quot;c&quot;);
+	list.add(null);
+
+	System.out.println(&quot;list: &quot; + list);
+
+	// remove nulls
+	list.removeAll(Collections.singleton(null));
+
+	System.out.println(&quot;after remove: &quot; + list);
+    }  	
+  	</code></pre>
+  	<h4 class="output">Output</h4>
+  	<pre><code>
+list: [a, null, b, null, c, null]
+after remove: [a, b, c]  	
+  	</code></pre>
+</div></div>
 </div>
 
 </body>
