@@ -33,6 +33,7 @@
 	<ul>
 		<li><a ng-click="navigate(1)">Get byte array from String</a></li>
 		<li><a ng-click="navigate(2)">Get Asci value of each Character in a String</a></li>
+		<li><a ng-click="navigate(3)">Convert byte array to String</a></li>
 	</ul>
 	</div></div>
 	
@@ -82,6 +83,25 @@ asciValues: [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
 </code></pre>
 </div></div>
 
+<div class="panel panel-primary" id="3"><div class="panel-heading">Get Asci value of each Character in a String</div><div class="panel-body">
+<pre ><code>
+ public void convertByteArrayToString() {
+	String str = &quot;Hello World&quot;;
+	byte[] byteArray = str.getBytes();
+	System.out.println(&quot;str: &quot; + str);
+	System.out.println(&quot;byteArray: &quot; + byteArray);
+
+	String strFromByteArray = new String(byteArray);
+	System.out.println(&quot;strFromByteArray: &quot; + strFromByteArray);
+    }
+</code></pre>
+<h4 class="output">Output</h4>
+<pre><code>
+str: Hello World
+byteArray: [B@1d56ce6a
+strFromByteArray: Hello World
+</code></pre>
+</div></div>
 </div>
 </body>
 </html>
