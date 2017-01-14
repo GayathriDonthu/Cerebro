@@ -8,6 +8,11 @@
 			$anchorScroll();
 		};
 		
+		$scope.scrollUp = function(){
+			$('body,html').animate({scrollTop: 0}, 800);
+            return false;
+		};
+		
 	}
 	
 	app.controller("cerebroController",["$scope", "$location", "$anchorScroll", CerebroController] );
