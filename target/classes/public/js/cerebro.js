@@ -2,71 +2,22 @@ var app = angular.module("cerebro",["ngRoute"]);
 
 app.config(function($routeProvider){
 	$routeProvider
-	.when("/home",{
-		templateUrl : "home.html",
-        controller : "cerebroController"
-	})
-	.when("/coreJava",{
-		templateUrl : "coreJava.html",
-        controller : "cerebroController"
-	})
-	.when("/string",{
-		templateUrl : "string.html",
-        controller : "cerebroController"
-	})
-	.when("/date",{
-		templateUrl : "date.html",
-        controller : "cerebroController"
-	})
-	.when("/collections",{
-		templateUrl : "collections.html",
-        controller : "cerebroController"
-	})
-	.when("/annotations",{
-		templateUrl : "annotations.html",
-        controller : "cerebroController"
-	})
-	.when("/enums",{
-		templateUrl : "enums.html",
-        controller : "cerebroController"
-	})
-	.when("/aspectJ",{
-		templateUrl : "aspectJ.html",
-        controller : "cerebroController"
-	})
-	.when("/fileIO",{
-		templateUrl : "fileIO.html",
-        controller : "cerebroController"
-	})
-	.when("/multiThreading",{
-		templateUrl : "multiThreading.html",
-        controller : "cerebroController"
-	})
-	.when("/hibernate",{
-		templateUrl : "hibernate.html",
-        controller : "cerebroController"
-	})
-	.when("/hibernate5HelloWorld",{
-		templateUrl : "hibernate5HelloWorld.html",
-        controller : "cerebroController"
-	})
-	.when("/maven",{
-		templateUrl : "maven.html",
-        controller : "cerebroController"
-	})
-	.when("/spring",{
-		templateUrl : "spring.html",
-        controller : "cerebroController"
-	})
-	.when("/tools",{
-		templateUrl : "tools.html",
-        controller : "cerebroController"
-	})
-	.when("/unitTesting",{
-		templateUrl : "unitTesting.html",
-        controller : "cerebroController"
-	});
-	
+	.when("/home",{templateUrl : "home.html",controller : "cerebroController"})
+	.when("/coreJava",{templateUrl : "coreJava.html",controller : "cerebroController"})
+	.when("/string",{templateUrl : "string.html",controller : "cerebroController"})
+	.when("/date",{templateUrl : "date.html",controller : "cerebroController"})
+	.when("/collections",{templateUrl : "collections.html",controller : "cerebroController"})
+	.when("/annotations",{templateUrl : "annotations.html",controller : "cerebroController"})
+	.when("/enums",{templateUrl : "enums.html",controller : "cerebroController"})
+	.when("/aspectJ",{templateUrl : "aspectJ.html",controller : "cerebroController"})
+	.when("/fileIO",{templateUrl : "fileIO.html",controller : "cerebroController"})
+	.when("/multiThreading",{templateUrl : "multiThreading.html",controller : "cerebroController"})
+	.when("/hibernate",{templateUrl : "hibernate.html",controller : "cerebroController"})
+	.when("/hibernate5HelloWorld",{templateUrl : "hibernate5HelloWorld.html",controller : "cerebroController"})
+	.when("/maven",{templateUrl : "maven.html",controller : "cerebroController"})
+	.when("/spring",{templateUrl : "spring.html",controller : "cerebroController"})
+	.when("/tools",{templateUrl : "tools.html",controller : "cerebroController"})
+	.when("/unitTesting",{templateUrl : "unitTesting.html",controller : "cerebroController"});
 });
 
 var CerebroController = function($scope, $location, $anchorScroll){
