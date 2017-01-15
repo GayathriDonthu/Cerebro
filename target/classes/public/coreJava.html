@@ -1,45 +1,41 @@
-<!DOCTYPE html>
-<html ng-app="cerebro">
-<head>
-<title>Cerebro</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/cerebro.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="js/cerebro.js"></script>
-</head>
-<body ng-controller="cerebroController">
-
-<!-- Top Navigation bar -->
-<div ng-include=" 'topNavigation.html' " id="0"></div>
-
 <!-- Body Content -->
-<div class="container" style="margin-top:25px">
-
 <div class="page-header">
     <h3>Core Java</h3>      
-  </div>
+</div>
+
+<ol class="breadcrumb">
+    <li><a href="cerebro.html#home">Home</a></li>
+    <li><a href="#">Private</a></li>
+    <li><a href="#">Pictures</a></li>
+    <li class="active">Vacation</li>        
+ </ol>
+ <hr/>
+ 
+<!-- <ol class="breadcrumb" >
+ 	<li ng-repeat="x in navigations">
+ 		<span ng-if="!$last"><a href="{{x.link}}">{{x.name}}</a></span>
+ 		<span ng-if="$last">{{x.name}}</span>
+ 	</li>
+ </ol>  
+<hr/> -->
 
 <!-- Pagination -->
-<ul class="pager">
+<!-- <ul class="pager">
   <li><a ng-href="home.html"><span class="glyphicon glyphicon-home"></span> Home </a></li>
   <li><a ng-href="coreJavaDefinitions.html">Next</a></li>
-</ul>
+</ul> -->
 	
 <div class="panel panel-primary" id="1"><div class="panel-heading">Contents</div><div class="panel-body">
 <ul>
   		<li><a ng-href="">Core Java Definitions</a></li>
-  		<li><a ng-href="string.html">String Practice</a></li>
-  		<li><a ng-href="date.html">Date Practice</a></li>
-  		<li><a ng-href="collections.html">Collections Practice</a></li>
-  		<li><a ng-href="annotations.html">Annotations Practice</a></li>
-  		<li><a ng-href="enums.html">Enums</a></li>
-  		<li><a ng-href="aspectJ.html">Implementing AOP using AspectJ</a></li>
-  		<li><a ng-href="fileIO.html">File IO</a></li>
-  		<li><a ng-href="multiThreading.html">Multi Threading</a></li>
+  		<li><a ng-href="#string">String Practice</a></li>
+  		<li><a ng-href="#date">Date Practice</a></li>
+  		<li><a ng-href="#collections">Collections Practice</a></li>
+  		<li><a ng-href="#annotations">Annotations Practice</a></li>
+  		<li><a ng-href="#enums">Enums</a></li>
+  		<li><a ng-href="#aspectJ">Implementing AOP using AspectJ</a></li>
+  		<li><a ng-href="#fileIO">File IO</a></li>
+  		<li><a ng-href="#multiThreading">Multi Threading</a></li>
   		<li>Immutable object</li>
   		<li>Singleton object</li>
   		<li>Message Format</li>
@@ -55,8 +51,5 @@
   		<li>Java 8 - Repeating Annotations</li>
   		<li>Java 8 - Type References</li>
   		<li>Java 8 - Method References</li>
-  	</ul>
+</ul>
 </div></div>
-
-</div>
-</body></html>
