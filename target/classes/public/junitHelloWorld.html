@@ -8,6 +8,7 @@
 	<li><a ng-click="navigate(2)">Test Case for Exception case</a></li>
 	<li><a ng-click="navigate(3)">Before and After annotations</a></li>
 	<li><a ng-click="navigate(4)">BeforeClass and AfterClass annotations</a></li>
+	<li><a ng-click="navigate(5)">timeout</a></li>
 </ul>
 </div></div>
 
@@ -219,5 +220,38 @@ JunitPractice -&gt; setupClass()
 JunitPractice -&gt; beforeAfterClassMethod1()
 JunitPractice -&gt; beforeAfterClassMethod2()
 JunitPractice -&gt; teardownClass()
+</code></pre>
+</div></div>
+
+<hr/>
+<div class="panel panel-primary" id="5"><div class="panel-heading">Method under test</div><div class="panel-body">
+<pre><code>
+public void timeOutMethod() {
+	try {
+	    Thread.sleep(1000 * 10);
+	} catch (InterruptedException e) {
+	    e.printStackTrace();
+	}
+    }
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary"><div class="panel-heading">Test method</div><div class="panel-body">
+<pre><code>
+<em>/**
+* timeout practice
+* timeout - we need to give in milli seconds. So below case will check for 5 seconds
+*/</em>
+@Test(timeout = 5 * 1000)
+public void timeOutMethod() {
+ JunitModel1 junitModel1 = new JunitModel1();
+ junitModel1.timeOutMethod();
+ }
+</code></pre>
+</div></div>
+<em>Output</em>
+<div class="panel panel-primary"><div class="panel-heading"></div><div class="panel-body">
+<pre><code>
+<img ng-src="images/junit/timeout.jpg" title="Timeout output"/>
 </code></pre>
 </div></div>
