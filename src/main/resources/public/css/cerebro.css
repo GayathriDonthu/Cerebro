@@ -14,4 +14,9 @@ a{
 	font-style: italic;
 }
 
+.up{
+	bottom: 0px;
+	right: 0px;
+	position: fixed;
+}
 /* id styles */

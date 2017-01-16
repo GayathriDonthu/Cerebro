@@ -45,7 +45,8 @@ app.config(function($routeProvider){
 	
 	// unit testing start
 	.when("/unitTesting",{templateUrl : "unitTesting.html",controller : "cerebroController"})
-	.when("/junit",{templateUrl : "junit.html",controller : "cerebroController"});
+	.when("/junit",{templateUrl : "junit.html",controller : "cerebroController"})
+	.when("/junitHelloWorld",{templateUrl : "junitHelloWorld.html",controller : "cerebroController"});
 	// unit testing end
 });
 

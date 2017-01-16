@@ -7,6 +7,7 @@
 		<li><a ng-click="navigate(1)">Get byte array from String</a></li>
 		<li><a ng-click="navigate(2)">Get Asci value of each Character in a String</a></li>
 		<li><a ng-click="navigate(3)">Convert byte array to String</a></li>
+		<li><a ng-click="navigate(4)">Divide String based on delimeter</a></li>
 	</ul>
 </div></div>
 	
@@ -73,5 +74,26 @@ asciValues: [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
 str: Hello World
 byteArray: [B@1d56ce6a
 strFromByteArray: Hello World
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="4"><div class="panel-heading">Get Asci value of each Character in a String</div><div class="panel-body">
+<pre ><code>
+public void divideString() {
+ String str = &quot;Hello-Java-World-Welcome-to-Java&quot;;
+ String[] strs = str.split(&quot;-&quot;);
+ for (String s : strs) {
+   System.out.println(s);
+ }
+}
+</code></pre>
+<em>Output</em>
+<pre><code>
+Hello
+Java
+World
+Welcome
+to
+Java
 </code></pre>
 </div></div>
