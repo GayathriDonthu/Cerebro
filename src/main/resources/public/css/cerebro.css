@@ -15,8 +15,8 @@ a{
 }
 
 .up{
-	bottom: 0px;
-	right: 0px;
+	bottom: 10px;
+	right: 5px;
 	position: fixed;
 }
 /* id styles */
