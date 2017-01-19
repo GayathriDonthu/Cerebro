@@ -47,8 +47,12 @@ app.config(function($routeProvider){
 	// unit testing start
 	.when("/unitTesting",{templateUrl : "unitTesting.html",controller : "cerebroController"})
 	.when("/junit",{templateUrl : "junit.html",controller : "cerebroController"})
-	.when("/junitHelloWorld",{templateUrl : "junitHelloWorld.html",controller : "cerebroController"});
+	.when("/junitHelloWorld",{templateUrl : "junitHelloWorld.html",controller : "cerebroController"})
 	// unit testing end
+	
+	// definitions start
+	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
+	// definitions end
 });
 
 var CerebroController = function($scope, $location, $anchorScroll){
@@ -62,6 +66,12 @@ var CerebroController = function($scope, $location, $anchorScroll){
         return false;
 	};
 	
+};
+
+var DefinitionsController = function($scope, $location, $anchorScroll){
+	$scope.message = "Hello Definitions";
+};
+
 	/*$scope.navigations = new Array();
 	$scope.navigations.push({"name": "Home","link": "cerebro.html#home"});
 	$scope.navigations.push({"name": "Core Java","link": "coreJava"});
@@ -74,6 +84,7 @@ var CerebroController = function($scope, $location, $anchorScroll){
 	};
 	
 	console.log($scope.navigations);*/
-}
+
 
 app.controller("cerebroController",["$scope", "$location", "$anchorScroll", CerebroController] );
+app.controller("definitionsController",["$scope", "$location", "$anchorScroll", DefinitionsController]);
