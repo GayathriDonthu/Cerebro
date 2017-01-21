@@ -16,6 +16,7 @@ app.config(function($routeProvider){
 	.when("/aspectJ",{templateUrl : "aspectJ.html",controller : "cerebroController"})
 	.when("/fileIO",{templateUrl : "fileIO.html",controller : "cerebroController"})
 	.when("/multiThreading",{templateUrl : "multiThreading.html",controller : "cerebroController"})
+	.when("/dynamicProxies",{templateUrl : "dynamicProxies.html",controller : "cerebroController"})
 	// core java end
 	
 	// hibernate start
@@ -26,6 +27,8 @@ app.config(function($routeProvider){
 	// build tools start
 	.when("/maven",{templateUrl : "maven.html",controller : "cerebroController"})
 	.when("/installMaven",{templateUrl : "installMaven.html",controller : "cerebroController"})
+	.when("/coreJavaProjectWithMaven",{templateUrl : "coreJavaProjectWithMaven.html",controller : "cerebroController"})
+	.when("/compilerPlugin",{templateUrl : "compilerPlugin.html",controller : "cerebroController"})
 	// build tools end
 	
 	// spring - start
