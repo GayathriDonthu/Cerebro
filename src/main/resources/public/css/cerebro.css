@@ -8,10 +8,6 @@ a{
 	cursor: pointer;
 }
 
-img{
-	width: 100%;
-}
-
 /* class styles */
 .output , .contentHeading {
 	font-weight: bold;

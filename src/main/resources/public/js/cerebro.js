@@ -24,7 +24,7 @@ app.config(function($routeProvider){
 	.when("/hibernate5HelloWorld",{templateUrl : "hibernate5HelloWorld.html",controller : "cerebroController"})
 	// hibernate end
 	
-	// build tools start
+	// maven start
 	.when("/maven",{templateUrl : "maven.html",controller : "cerebroController"})
 	.when("/installMaven",{templateUrl : "installMaven.html",controller : "cerebroController"})
 	.when("/coreJavaProjectWithMaven",{templateUrl : "coreJavaProjectWithMaven.html",controller : "cerebroController"})
@@ -34,7 +34,8 @@ app.config(function($routeProvider){
 	.when("/sourcePlugin",{templateUrl : "sourcePlugin.html",controller : "cerebroController"})
 	.when("/javadocPlugin",{templateUrl : "javadocPlugin.html",controller : "cerebroController"})
 	.when("/warPlugin",{templateUrl : "warPlugin.html",controller : "cerebroController"})
-	// build tools end
+	.when("/pmdPlugin",{templateUrl : "pmdPlugin.html",controller : "cerebroController"})
+	// maven end
 	
 	// spring - start
 	.when("/spring",{templateUrl : "spring.html",controller : "cerebroController"})

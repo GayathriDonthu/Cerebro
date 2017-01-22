@@ -26,10 +26,8 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Due to below dependency some features with below URLs will be available to application: 
-			1. http://localhost:portNumber/health 2. http://localhost:portNumber/beans 
-			3. http://localhost:portNumber/env 4. http://localhost:portNumber/metrics 
-			5. http://localhost:portNumber/mappings 6. http://localhost:portNumber/trace -->
+		<!-- Due to below dependency some features with below URLs will be available to application: 1. http://localhost:portNumber/health 2. http://localhost:portNumber/beans 
+			3. http://localhost:portNumber/env 4. http://localhost:portNumber/metrics 5. http://localhost:portNumber/mappings 6. http://localhost:portNumber/trace -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -57,13 +55,15 @@
 
 	<build>
 		<finalName>Cerebro</finalName>
-		<pluginManagement>
 			<plugins>
+				<!-- Compiler plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.5.1</version>
 					<configuration>
+						<fork>false</fork>
+						<meminitial>128m</meminitial>
+						<maxmem>512m</maxmem>
 						<source>1.8</source>
 						<target>1.8</target>
 						<compilerArgument>-parameter</compilerArgument>
@@ -72,6 +72,7 @@
 						<showWarnings>true</showWarnings>
 					</configuration>
 				</plugin>
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
@@ -79,8 +80,46 @@
 						<mainClass>com.cerebro.CerebroApp</mainClass>
 					</configuration>
 				</plugin>
+
+				<!-- jar plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<useDefaultManifestFile>true</useDefaultManifestFile>
+					</configuration>
+				</plugin>
+
+				<!-- sources plugin on mvn install -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-source</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- javadoc plugin on mvn install -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>generate-javadoc</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
-		</pluginManagement>
 	</build>
 
 </project>
