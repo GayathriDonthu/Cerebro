@@ -29,6 +29,11 @@ app.config(function($routeProvider){
 	.when("/installMaven",{templateUrl : "installMaven.html",controller : "cerebroController"})
 	.when("/coreJavaProjectWithMaven",{templateUrl : "coreJavaProjectWithMaven.html",controller : "cerebroController"})
 	.when("/compilerPlugin",{templateUrl : "compilerPlugin.html",controller : "cerebroController"})
+	.when("/repositoriesTag",{templateUrl : "repositoriesTag.html",controller : "cerebroController"})
+	.when("/jarPlugin",{templateUrl : "jarPlugin.html",controller : "cerebroController"})
+	.when("/sourcePlugin",{templateUrl : "sourcePlugin.html",controller : "cerebroController"})
+	.when("/javadocPlugin",{templateUrl : "javadocPlugin.html",controller : "cerebroController"})
+	.when("/warPlugin",{templateUrl : "warPlugin.html",controller : "cerebroController"})
 	// build tools end
 	
 	// spring - start
@@ -53,12 +58,18 @@ app.config(function($routeProvider){
 	.when("/junitHelloWorld",{templateUrl : "junitHelloWorld.html",controller : "cerebroController"})
 	// unit testing end
 	
+	// ant start
+	.when("/ant",{templateUrl : "ant.html",controller : "cerebroController"})
+	.when("/antJacoco",{templateUrl : "antJacoco.html",controller : "cerebroController"})
+	// ant end
+	
 	// definitions start
 	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
 	// definitions end
 });
 
 var CerebroController = function($scope, $location, $anchorScroll){
+	
 	$scope.navigate = function(id){
 		$location.hash(id);
 		$anchorScroll();
