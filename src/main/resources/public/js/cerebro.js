@@ -64,6 +64,11 @@ app.config(function($routeProvider){
 	.when("/antJacoco",{templateUrl : "antJacoco.html",controller : "cerebroController"})
 	// ant end
 	
+	// DB start
+	.when("/db",{templateUrl : "db.html",controller : "cerebroController"})
+	.when("/h2DB",{templateUrl : "h2DB.html",controller : "cerebroController"})
+	// DB end
+	
 	// definitions start
 	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
 	// definitions end
