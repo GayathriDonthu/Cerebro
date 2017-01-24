@@ -83,8 +83,27 @@ var CerebroController = function($scope, $location, $anchorScroll){
 	
 };
 
-var DefinitionsController = function($scope, $location, $anchorScroll){
+var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	$scope.message = "Hello Definitions";
+	var definitionsMessage = " Definitions";
+	$scope.definitionsType;
+	
+	var onSuccess = function(response){
+		console.log("onSuccess()");
+		console.log(response.data);
+	};
+	
+	var onError = function(onError){
+		console.log("onError()");
+	};
+	
+	var definitions = function(){
+		console.log("definitionsType: "+$scope.definitionsType);
+		$http.get("http://localhost:9090/definitions/"+$scope.definitionsType).then(onSuccess, onError);
+		$scope.message = $scope.definitionsType + definitionsMessage;
+	};
+	
+	$scope.definitions = definitions;
 };
 
 	/*$scope.navigations = new Array();
@@ -102,4 +121,4 @@ var DefinitionsController = function($scope, $location, $anchorScroll){
 
 
 app.controller("cerebroController",["$scope", "$location", "$anchorScroll", CerebroController] );
-app.controller("definitionsController",["$scope", "$location", "$anchorScroll", DefinitionsController]);
+app.controller("definitionsController",["$scope", "$location", "$anchorScroll","$http", DefinitionsController]);
