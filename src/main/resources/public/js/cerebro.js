@@ -50,7 +50,7 @@ app.config(function($routeProvider){
 	.when("/json",{templateUrl : "json.html",controller : "cerebroController"})
 	.when("/jacksonJson",{templateUrl : "jacksonJson.html",controller : "cerebroController"})
 	.when("/openCSV",{templateUrl : "openCSV.html",controller : "cerebroController"})
-	
+	.when("/dozer",{templateUrl : "dozer.html",controller : "cerebroController"})
 	// tools end
 	
 	// unit testing start
@@ -89,9 +89,12 @@ var CerebroController = function($scope, $location, $anchorScroll){
 };
 
 var DefinitionsController = function($scope, $location, $anchorScroll, $http){
-	$scope.message = "Hello Definitions";
 	var definitionsMessage = " Definitions";
+	var config = {"Content-Type": "application/json"};
+	
+	$scope.message = "Cerebro Definitions";
 	$scope.definitionsType;
+	$scope.definition = {'description':'','details':''};
 	
 	var onSuccess = function(response){
 		console.log("onSuccess()");
@@ -102,13 +105,19 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 		console.log("onError()");
 	};
 	
-	var definitions = function(){
+	var getDefinitions = function(){
 		console.log("definitionsType: "+$scope.definitionsType);
 		$http.get("http://localhost:9090/definitions/"+$scope.definitionsType).then(onSuccess, onError);
 		$scope.message = $scope.definitionsType + definitionsMessage;
 	};
 	
-	$scope.definitions = definitions;
+	var addDefintions = function(){
+		console.log("addDefintion()"+$scope.definition.description+", "+$scope.definition.details);
+		$http.post("http://localhost:9090/addDefinitions",$scope.definition,config).then(onSuccess, onError);
+	}
+	
+	$scope.getDefinitions = getDefinitions;
+	$scope.addDefintions = addDefintions;
 };
 
 	/*$scope.navigations = new Array();

@@ -3,4 +3,11 @@
 </div>
 
 <input type="text" placeholder="Enter Definition Type" ng-model="definitionsType" autofocus required/>
-<input type="button" value="Definitions" ng-click="definitions()"/>
+<input type="button" value="Definitions" ng-click="getDefinitions()"/>
+
+<hr />
+<form name="addDefinitionsForm">
+<input type="text" placeholder="Description" ng-model="definition.description" />
+<input type="text" placeholder="Details" ng-model="definition.details" />
+<input type="button" value="Add Definition" ng-click="addDefintions()" />
+</form>
