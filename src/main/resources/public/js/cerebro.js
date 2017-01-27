@@ -8,7 +8,6 @@ app.config(function($routeProvider){
 	.when("/coreJava",{templateUrl : "coreJava.html",controller : "cerebroController"})
 	.when("/string",{templateUrl : "string.html",controller : "cerebroController"})
 	.when("/date",{templateUrl : "date.html",controller : "cerebroController"})
-	.when("/collections",{templateUrl : "collections.html",controller : "cerebroController"})
 	.when("/list",{templateUrl : "list.html",controller : "cerebroController"})
 	.when("/map",{templateUrl : "map.html",controller : "cerebroController"})
 	.when("/annotations",{templateUrl : "annotations.html",controller : "cerebroController"})
@@ -64,10 +63,20 @@ app.config(function($routeProvider){
 	.when("/antJacoco",{templateUrl : "antJacoco.html",controller : "cerebroController"})
 	// ant end
 	
+	// gradle start
+	.when("/gradle",{templateUrl : "gradle.html",controller : "cerebroController"})
+	//gradle end
+	
 	// DB start
 	.when("/db",{templateUrl : "db.html",controller : "cerebroController"})
 	.when("/h2DB",{templateUrl : "h2DB.html",controller : "cerebroController"})
 	// DB end
+	
+	// Scala start
+	.when("/scala",{templateUrl : "scala.html",controller : "cerebroController"})
+	.when("/installScala",{templateUrl : "installScala.html",controller : "cerebroController"})
+	.when("/scalaHelloWorldWithSbt",{templateUrl : "scalaHelloWorldWithSbt.html",controller : "cerebroController"})
+	// Scala end
 	
 	// definitions start
 	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
@@ -98,22 +107,31 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	
 	var onSuccess = function(response){
 		console.log("onSuccess()");
-		console.log(response.data);
+		$scope.definitionsList = response.data;
 	};
 	
-	var onError = function(onError){
+	var onError = function(){
 		console.log("onError()");
 	};
 	
+	var onAddSuccess = function(){
+		$scope.addDefinitionStatus = "add success";
+		$scope.definition.description = '';
+		$scope.definition.details = '';
+		getDefinitions();
+	}
+	
+	var onAddError = function(){
+		$scope.addDefinitionStatus = "add error";
+	}
+	
 	var getDefinitions = function(){
-		console.log("definitionsType: "+$scope.definitionsType);
-		$http.get("http://localhost:9090/definitions/"+$scope.definitionsType).then(onSuccess, onError);
+		$http.get("/definitions/"+$scope.definitionsType).then(onSuccess, onError);
 		$scope.message = $scope.definitionsType + definitionsMessage;
 	};
 	
 	var addDefintions = function(){
-		console.log("addDefintion()"+$scope.definition.description+", "+$scope.definition.details);
-		$http.post("http://localhost:9090/addDefinitions",$scope.definition,config).then(onSuccess, onError);
+		$http.post("/addDefinitions",$scope.definition,config).then(onAddSuccess, onAddError);
 	}
 	
 	$scope.getDefinitions = getDefinitions;

@@ -2,12 +2,35 @@
     <h3>{{message}}</h3>      
 </div>
 
-<input type="text" placeholder="Enter Definition Type" ng-model="definitionsType" autofocus required/>
+<input type="text" placeholder="Enter Definition Type" ng-model="definitionsType" />
 <input type="button" value="Definitions" ng-click="getDefinitions()"/>
 
+<hr/>
+
+<table class="table table-hover table-bordered table-striped">
+	<thead>
+		<tr>
+		<th>Description</th>
+		<th>Details</th>
+		<th>Images</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="definition in definitionsList">
+			<td>{{definition.description}}</td>
+			<td>{{definition.details}}</td>
+			<td>{{definition.imagePaths}}</td>
+		</tr>
+	</tbody>
+</table>
+
 <hr />
-<form name="addDefinitionsForm">
-<input type="text" placeholder="Description" ng-model="definition.description" />
+
+<!-- <form name="addDefinitionsForm"> -->
+Add Definition Status: {{addDefinitionStatus}}
+<div>
+<input type="text" placeholder="Description" ng-model="definition.description" autofocus/>
 <input type="text" placeholder="Details" ng-model="definition.details" />
 <input type="button" value="Add Definition" ng-click="addDefintions()" />
-</form>
+<!-- </form> -->
+</div>
