@@ -46,8 +46,8 @@ app.config(function($routeProvider){
 	// tools start
 	.when("/tools",{templateUrl : "tools.html",controller : "cerebroController"})
 	.when("/csv",{templateUrl : "csv.html",controller : "cerebroController"})
-	.when("/json",{templateUrl : "json.html",controller : "cerebroController"})
 	.when("/jacksonJson",{templateUrl : "jacksonJson.html",controller : "cerebroController"})
+	.when("/jacksonReadJson",{templateUrl : "readJson.html",controller : "cerebroController"})
 	.when("/openCSV",{templateUrl : "openCSV.html",controller : "cerebroController"})
 	.when("/dozer",{templateUrl : "dozer.html",controller : "cerebroController"})
 	// tools end
