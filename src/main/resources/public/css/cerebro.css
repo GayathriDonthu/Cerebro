@@ -31,4 +31,8 @@ table tr:nth-child(even) {
 	right: 5px;
 	position: fixed;
 }
+
+.noBullet{
+	list-style-type: none;
+}
 /* id styles */
