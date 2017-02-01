@@ -43,6 +43,8 @@ app.config(function($routeProvider){
 	.when("/springSecurityJavaConfig",{templateUrl : "springSecurityJavaConfig.html",controller : "cerebroController"})
 	.when("/springSecurityFlow",{templateUrl : "springSecurityFlow.html",controller : "cerebroController"})
 	.when("/springMVC",{templateUrl : "springMVC.html",controller : "cerebroController"})
+	.when("/springMVCHelloWorld",{templateUrl : "springMVCHelloWorld.html",controller : "cerebroController"})
+	
 	// spring end
 	
 	// tools start
