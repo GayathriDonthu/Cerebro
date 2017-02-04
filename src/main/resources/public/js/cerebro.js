@@ -111,9 +111,11 @@ var CerebroController = function($scope, $location, $anchorScroll, breadCrumbsSe
 		breadCrumbsService.addBreadCrumb(name, link);
 	};
 	
-	
+	$scope.resetBreadCrumbs = function(){
+		breadCrumbsService.resetBreadCrumbs();
+	}
 	$scope.breadCrumbs = breadCrumbsService.getNavigations();
-	
+	console.log("$scope.breadCrumbs: "+$scope.breadCrumbs);
 };
 
 var DefinitionsController = function($scope, $location, $anchorScroll, $http){
@@ -174,6 +176,11 @@ app.service('breadCrumbsService', function(){
 	this.getNavigations = function(){
 		return navigations; 
 	};
+	
+	this.resetBreadCrumbs = function(){
+		navigations = new Array();
+		isHomeAdded = false;
+	}
 	
 });
 
