@@ -2,19 +2,6 @@
     <h3>Cerebro</h3>      
 </div>	
 
-<!-- Search box -->
-<!-- <div class="row">
-        <div class="col-md-4 col-md-offset-3">
-            <form action="" class="search-form">
-                <div class="form-group has-feedback">
-            		<label for="search" class="sr-only">Search</label>
-            		<input type="text" class="form-control" name="search" id="search" placeholder="Search">
-              		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-            	</div>
-            </form>
-        </div>
-    </div> -->
-
 <div class="row">
 
   <div class="col-sm-4"><div class="panel panel-primary">
@@ -26,7 +13,7 @@
   		<li>Date Practice</li>
   		<li>Collections Practice</li>
   		<li>Annotations Practice</li>
-  		<li><a ng-href="#coreJava" ng-click="buildBreadCrumbs('Core Java', 'coreJava')">More</a></li>
+  		<li><a ng-href="#coreJava" ng-click="buildBreadCrumbs('Core Java', '#coreJava')">More</a></li>
   	</ul>
   </div></div>
   </div>
@@ -40,7 +27,7 @@
   		<li>HQL</li>
   		<li>Native SQL</li>
   		<li>Named Queries</li>
-  		<li><a ng-href="#hibernate">More</a></li>
+  		<li><a ng-href="#hibernate" ng-click="buildBreadCrumbs('Hibernate', '#hibernate')">More</a></li>
   	</ul>
   </div></div>
   </div>
@@ -52,7 +39,7 @@
   		<li>Spring AOP</li>
   		<li>Spring Boot</li>
   		<li>Spring Data JPA</li>
-  		<li><a ng-href="#spring">More</a></li>
+  		<li><a ng-href="#spring" ng-click="buildBreadCrumbs('Spring', '#spring')">More</a></li>
   	</ul>
   </div></div>	
   </div>
@@ -61,9 +48,9 @@
   <div class="panel-heading">Build Tools</div>
   <div class="panel-body">
   	<ul>
-  		<li><a ng-href="#ant">Ant (Another Neat Tool)</a></li>
-  		<li><a ng-href="#maven">Maven</a></li>
-  		<li><a ng-href="#gradle">Gradle</a></li>
+  		<li><a ng-href="#ant"  ng-click="buildBreadCrumbs('Ant', '#ant')">Ant (Another Neat Tool)</a></li>
+  		<li><a ng-href="#maven"  ng-click="buildBreadCrumbs('Maven', '#maven')">Maven</a></li>
+  		<li><a ng-href="#gradle"  ng-click="buildBreadCrumbs('Gradle', '#gradle')">Gradle</a></li>
   	</ul>
   </div></div>
   </div>
@@ -75,7 +62,7 @@
   		<li>CSV</li>
   		<li>JSON</li>
   		<li>Dozer</li>
-  		<li><a ng-href="#tools">More</a></li>
+  		<li><a ng-href="#tools"  ng-click="buildBreadCrumbs('Tools', '#tools')">More</a></li>
   	</ul>
   </div></div>
   </div>
@@ -87,14 +74,14 @@
   		<li>Mockito</li>
   		<li>Power Mock</li>
   		<li>Spring + Junit </li>
-		<li><a ng-href="#unitTesting">More</a></li>
+		<li><a ng-href="#unitTesting"  ng-click="buildBreadCrumbs('Unit Testing', '#unitTesting')">More</a></li>
  	</ul>
 </div></div></div>
 
 <div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">DB</div><div class="panel-body">
 <ul>
 	<li>H2</li>
-	<li><a ng-href="#db">More</a></li>
+	<li><a ng-href="#db"  ng-click="buildBreadCrumbs('DB', '#db')">More</a></li>
 </ul>
 </div></div></div>  
  

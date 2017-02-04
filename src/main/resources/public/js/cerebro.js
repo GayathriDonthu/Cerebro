@@ -95,7 +95,7 @@ app.config(function($routeProvider){
 	// definitions end
 });
 
-var CerebroController = function($scope, $location, $anchorScroll){
+var CerebroController = function($scope, $location, $anchorScroll, breadCrumbsService){
 	
 	$scope.navigate = function(id){
 		$location.hash(id);
@@ -106,6 +106,13 @@ var CerebroController = function($scope, $location, $anchorScroll){
 		$('body,html').animate({scrollTop: 0}, 800);
         return false;
 	};
+	
+	$scope.buildBreadCrumbs = function(name, link){
+		breadCrumbsService.addBreadCrumb(name, link);
+	};
+	
+	
+	$scope.breadCrumbs = breadCrumbsService.getNavigations();
 	
 };
 
@@ -150,19 +157,25 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	$scope.addDefintions = addDefintions;
 };
 
-	/*$scope.navigations = new Array();
-	$scope.navigations.push({"name": "Home","link": "cerebro.html#home"});
-	$scope.navigations.push({"name": "Core Java","link": "coreJava"});
-	$scope.navigations.push({"name": "Hibernate","link": "hibernate"});
-	$scope.navigations.push({"name": "Vacation","link": "#"});
+app.service('breadCrumbsService', function(){
+	var navigations = new Array();
+	var isHomeAdded = false;
+	var prefix = "cerebro.html";
 	
-	$scope.buildBreadCrumbs = function(name, link){
-		link =  "cerebro.html#"+link;
-		$scope.navigations.push({name,link});
+	this.addBreadCrumb = function(name, link){
+		if(!isHomeAdded){
+			navigations.push({"name": "Home","link": prefix+"#home"});
+		}
+		link = prefix + link;
+		navigations.push({name, link});
+		isHomeAdded = true;
+	}
+	
+	this.getNavigations = function(){
+		return navigations; 
 	};
 	
-	console.log($scope.navigations);*/
+});
 
-
-app.controller("cerebroController",["$scope", "$location", "$anchorScroll", CerebroController] );
+app.controller("cerebroController",["$scope", "$location", "$anchorScroll", "breadCrumbsService", CerebroController] );
 app.controller("definitionsController",["$scope", "$location", "$anchorScroll","$http", DefinitionsController]);

@@ -35,4 +35,8 @@ table tr:nth-child(even) {
 .noBullet{
 	list-style-type: none;
 }
+
+.notActive{
+	
+}
 /* id styles */
