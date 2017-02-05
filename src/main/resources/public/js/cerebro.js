@@ -16,6 +16,7 @@ app.config(function($routeProvider){
 	.when("/fileIO",{templateUrl : "fileIO.html",controller : "cerebroController"})
 	.when("/multiThreading",{templateUrl : "multiThreading.html",controller : "cerebroController"})
 	.when("/dynamicProxies",{templateUrl : "dynamicProxies.html",controller : "cerebroController"})
+	.when("/java8CollectionStreams",{templateUrl : "java8CollectionStreams.html",controller : "cerebroController"})
 	// core java end
 	
 	// hibernate start
@@ -161,15 +162,22 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 
 app.service('breadCrumbsService', function(){
 	var navigations = new Array();
+	var keys = new Array();
 	var isHomeAdded = false;
 	var prefix = "cerebro.html";
+	var homeKey = "Home";
+	var homeLink = prefix+"#home"
 	
 	this.addBreadCrumb = function(name, link){
 		if(!isHomeAdded){
-			navigations.push({"name": "Home","link": prefix+"#home"});
+			navigations.push({"name": homeKey,"link": homeLink});
+			keys.push(homeKey);
 		}
 		link = prefix + link;
-		navigations.push({name, link});
+		if(keys.indexOf(name) == -1){
+			navigations.push({name, link});
+			keys.push(name);
+		}
 		isHomeAdded = true;
 	}
 	
