@@ -54,6 +54,8 @@ app.config(function($routeProvider){
 	.when("/springMVCStaticFilesXml",{templateUrl : "springMVCStaticFilesXml.html",controller : "cerebroController"})
 	.when("/springMVCContentNegotiationXml",{templateUrl : "springMVCContentNegotiationXml.html",controller : "cerebroController"})
 	.when("/springMVCXmlJunitTesting",{templateUrl : "springMVCXmlJunitTesting.html",controller : "cerebroController"})
+	.when("/springMVCCustomConfigXml",{templateUrl : "springMVCCustomConfigXml.html",controller : "cerebroController"})
+	.when("/springCore",{templateUrl : "springCore.html",controller : "cerebroController"})
 	// spring end
 	
 	// tools start
@@ -90,6 +92,12 @@ app.config(function($routeProvider){
 	.when("/installScala",{templateUrl : "installScala.html",controller : "cerebroController"})
 	.when("/scalaHelloWorldWithSbt",{templateUrl : "scalaHelloWorldWithSbt.html",controller : "cerebroController"})
 	// Scala end
+	
+	// Apache camel start
+	.when("/camel",{templateUrl : "camel.html",controller : "cerebroController"})
+	.when("/camelUnmarshalCsv",{templateUrl : "camelUnmarshalCsv.html",controller : "cerebroController"})
+	
+	// Apache camel end
 	
 	// definitions start
 	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
