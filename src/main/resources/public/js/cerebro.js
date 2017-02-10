@@ -56,6 +56,9 @@ app.config(function($routeProvider){
 	.when("/springMVCXmlJunitTesting",{templateUrl : "springMVCXmlJunitTesting.html",controller : "cerebroController"})
 	.when("/springMVCCustomConfigXml",{templateUrl : "springMVCCustomConfigXml.html",controller : "cerebroController"})
 	.when("/springCore",{templateUrl : "springCore.html",controller : "cerebroController"})
+	.when("/springORM",{templateUrl : "springORM.html",controller : "cerebroController"})
+	.when("/springORMHelloWorldXml",{templateUrl : "springORMHelloWorldXml.html",controller : "cerebroController"})
+	
 	// spring end
 	
 	// tools start
