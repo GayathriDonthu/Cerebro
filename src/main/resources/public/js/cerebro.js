@@ -58,7 +58,11 @@ app.config(function($routeProvider){
 	.when("/springCore",{templateUrl : "springCore.html",controller : "cerebroController"})
 	.when("/springORM",{templateUrl : "springORM.html",controller : "cerebroController"})
 	.when("/springORMHelloWorldXml",{templateUrl : "springORMHelloWorldXml.html",controller : "cerebroController"})
-	
+	.when("/springMVCMultiConfigXml",{templateUrl : "springMVCMultiConfigXml.html",controller : "cerebroController"})
+	.when("/springBoot",{templateUrl : "springBoot.html",controller : "cerebroController"})
+	.when("/springBootHelloWorld",{templateUrl : "springBootHelloWorld.html",controller : "cerebroController"})
+	.when("/springBootJsonAndXml",{templateUrl : "springBootJsonAndXml.html",controller : "cerebroController"})
+	.when("/springBootJetty",{templateUrl : "springBootJetty.html",controller : "cerebroController"})
 	// spring end
 	
 	// tools start
