@@ -63,6 +63,10 @@ app.config(function($routeProvider){
 	.when("/springBootHelloWorld",{templateUrl : "springBootHelloWorld.html",controller : "cerebroController"})
 	.when("/springBootJsonAndXml",{templateUrl : "springBootJsonAndXml.html",controller : "cerebroController"})
 	.when("/springBootJetty",{templateUrl : "springBootJetty.html",controller : "cerebroController"})
+	.when("/springJpa",{templateUrl : "springJpa.html",controller : "cerebroController"})
+	.when("/springMvcDataJpa",{templateUrl : "springMvcDataJpa.html",controller : "cerebroController"})
+	.when("/springMvcJpa",{templateUrl : "springMvcJpa.html",controller : "cerebroController"})
+	.when("/springBootFileUpload",{templateUrl : "springBootFileUpload.html",controller : "cerebroController"})
 	// spring end
 	
 	// tools start
