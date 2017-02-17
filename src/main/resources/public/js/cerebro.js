@@ -107,7 +107,7 @@ app.config(function($routeProvider){
 	// Apache camel start
 	.when("/camel",{templateUrl : "camel.html",controller : "cerebroController"})
 	.when("/camelUnmarshalCsv",{templateUrl : "camelUnmarshalCsv.html",controller : "cerebroController"})
-	
+	.when("/camelMarshalCsv",{templateUrl : "camelMarshalCsv.html",controller : "cerebroController"})
 	// Apache camel end
 	
 	// definitions start
