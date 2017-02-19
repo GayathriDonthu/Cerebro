@@ -67,6 +67,10 @@ app.config(function($routeProvider){
 	.when("/springMvcDataJpa",{templateUrl : "springMvcDataJpa.html",controller : "cerebroController"})
 	.when("/springMvcJpa",{templateUrl : "springMvcJpa.html",controller : "cerebroController"})
 	.when("/springBootFileUpload",{templateUrl : "springBootFileUpload.html",controller : "cerebroController"})
+	.when("/springDIHelloWorldXml",{templateUrl : "springDIHelloWorldXml.html",controller : "cerebroController"})
+	.when("/springInjectCollectionsXml",{templateUrl : "springInjectCollectionsXml.html",controller : "cerebroController"})
+	.when("/springDIConstructorInjectionXml",{templateUrl : "springDIConstructorInjectionXml.html",controller : "cerebroController"})
+	
 	// spring end
 	
 	// tools start
@@ -111,7 +115,8 @@ app.config(function($routeProvider){
 	// Apache camel end
 	
 	// definitions start
-	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
+	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"})
+	.when("/addDefinitions",{templateUrl : "addDefinitions.html",controller : "definitionsController"});
 	// definitions end
 });
 
@@ -143,8 +148,13 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	var config = {"Content-Type": "application/json"};
 	
 	$scope.message = "Cerebro Definitions";
-	$scope.definitionsType;
 	$scope.definition = {'description':'','details':''};
+	$scope.definitionType = {
+		selected: null,
+		types : [
+		         {key: "Core Java", value: "Core Java"},	
+		         {key: "Apache Kafka", value: "Apache Kafka"}]
+	};
 	
 	var onSuccess = function(response){
 		console.log("onSuccess()");
@@ -159,7 +169,6 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 		$scope.addDefinitionStatus = "add success";
 		$scope.definition.description = '';
 		$scope.definition.details = '';
-		getDefinitions();
 	}
 	
 	var onAddError = function(){
@@ -167,12 +176,15 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	}
 	
 	var getDefinitions = function(){
-		$http.get("/definitions/"+$scope.definitionsType).then(onSuccess, onError);
-		$scope.message = $scope.definitionsType + definitionsMessage;
+		var defType = $scope.definitionType.selected;
+		$http.get("/definitions/"+defType).then(onSuccess, onError);
+		$scope.message = defType + definitionsMessage;
 	};
 	
 	var addDefintions = function(){
-		$http.post("/addDefinitions",$scope.definition,config).then(onAddSuccess, onAddError);
+		console.log($scope.definitionType.selected);
+		var defType = $scope.definitionType.selected;
+		$http.post("/addDefinitions/"+defType,$scope.definition,config).then(onAddSuccess, onAddError);
 	}
 	
 	$scope.getDefinitions = getDefinitions;
