@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.cerebro.service.CerebroService;
 import com.cerebro.service.impl.ApacheKafkaServiceImpl;
 import com.cerebro.service.impl.CoreJavaServiceImpl;
+import com.cerebro.service.impl.GroovyServiceImpl;
 
 /**
  * Factory class to get service based definition type
@@ -24,6 +25,10 @@ public class ServiceFactory {
     @Qualifier("apacheKafkaServiceImpl")
     private ApacheKafkaServiceImpl apacheKafkaServiceImpl;
 
+    @Autowired
+    @Qualifier("groovyServiceImpl")
+    private GroovyServiceImpl groovyServiceImpl;
+
     public CerebroService getService(String definitionType) {
 	CerebroService cerebroService = null;
 
@@ -33,6 +38,9 @@ public class ServiceFactory {
 	    break;
 	case Constants.APACHE_KAFKA:
 	    cerebroService = apacheKafkaServiceImpl;
+	    break;
+	case Constants.GROOVY:
+	    cerebroService = groovyServiceImpl;
 	    break;
 	}
 
