@@ -8,6 +8,7 @@
 		<li><a ng-click="navigate(2)">Get Asci value of each Character in a String</a></li>
 		<li><a ng-click="navigate(3)">Convert byte array to String</a></li>
 		<li><a ng-click="navigate(4)">Divide String based on delimeter</a></li>
+		<li><a ng-click="navigate(5)">Convert asci number to String</a></li>
 	</ul>
 </div></div>
 	
@@ -57,7 +58,7 @@ asciValues: [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
 </code></pre>
 </div></div>
 
-<div class="panel panel-primary" id="3"><div class="panel-heading">Get Asci value of each Character in a String</div><div class="panel-body">
+<div class="panel panel-primary" id="3"><div class="panel-heading">Convert byte array to String</div><div class="panel-body">
 <pre ><code>
  public void convertByteArrayToString() {
 	String str = &quot;Hello World&quot;;
@@ -77,7 +78,7 @@ strFromByteArray: Hello World
 </code></pre>
 </div></div>
 
-<div class="panel panel-primary" id="4"><div class="panel-heading">Get Asci value of each Character in a String</div><div class="panel-body">
+<div class="panel panel-primary" id="4"><div class="panel-heading">Divide String based on delimeter</div><div class="panel-body">
 <pre ><code>
 public void divideString() {
  String str = &quot;Hello-Java-World-Welcome-to-Java&quot;;
@@ -95,5 +96,36 @@ World
 Welcome
 to
 Java
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="5"><div class="panel-heading">Convert asci number to String</div><div class="panel-body">
+<pre ><code>
+public void convertStringToCharArray() {
+	String str = &quot;Hello World&quot;;
+	byte[] byteArray = str.getBytes();
+	String byteString = Arrays.toString(byteArray);
+	System.out.println(byteString);
+
+	byteString = byteString.substring(1, byteString.length() - 1);
+	System.out.println(byteString);
+
+	String[] asciValues = byteString.split(&quot;,&quot;);
+
+	List&lt;String&gt; charsList = new ArrayList&lt;&gt;();
+
+	for (String asciValue : asciValues) {
+	    String c = String.valueOf((char) Integer.parseInt(asciValue.trim()));
+	    charsList.add(c);
+	}
+
+	System.out.println(charsList);
+    }
+</code></pre>
+<em>Output</em>
+<pre><code>
+[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
+72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100
+[H, e, l, l, o,  , W, o, r, l, d]
 </code></pre>
 </div></div>
