@@ -28,7 +28,7 @@
 <ol class="breadcrumb">
    <!--  <li ng-repeat="breadCrumb in breadCrumbs" ng-if="!$last"><a ng-href="{{breadCrumb.link}}">{{breadCrumb.name}}</a></li>
     <li ng-repeat="breadCrumb in breadCrumbs" ng-if="$last" class="active">{{breadCrumb.name}}</li> -->
-     <li ng-repeat="breadCrumb in breadCrumbs"><a ng-href="{{breadCrumb.link}}">{{breadCrumb.name}}</a></li>
+     <li ng-repeat="breadCrumb in breadCrumbs"><a ng-href="{{breadCrumb.link}}" ng-click="popBreadCrumb($index)">{{breadCrumb.name}}</a></li>
  </ol>
  <hr/>
 </div></div>
