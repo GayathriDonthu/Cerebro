@@ -1,5 +1,5 @@
 <!-- Top Navigation Bar -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="cerebroController">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -7,28 +7,29 @@
         			<span class="icon-bar"></span>
         			<span class="icon-bar"></span> 
       			</button>
-				<a class="navbar-brand" ng-href="#home"><span class="glyphicon glyphicon-home"></span></a>
+				<!-- <a class="navbar-brand" ng-href="#home" ng-click="buildBreadCrumbs('Home', '#home')"><span class="glyphicon glyphicon-home"></span></a> -->
+				<a class="navbar-brand" ng-href="#home" ng-click="popBreadCrumb(-1)"><span class="glyphicon glyphicon-home"></span></a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
 			
 			<ul class="nav navbar-nav">
-				<li><a ng-href="#coreJava">Core Java</a></li>
-				<li><a ng-href="#spring">Spring</a></li>
-				<li><a ng-href="#hibernate">Hibernate</a></li>
-				<li><a ng-href="#tools">Tools</a></li>
-				<li><a ng-href="#unitTesting">Unit Testing</a></li>
-				<li><a ng-href="#scala">Scala</a></li>
+				<li><a ng-href="#coreJava" ng-click="buildBreadCrumbs('Core Java', '#coreJava')">Core Java</a></li>
+				<li><a ng-href="#spring" ng-click="buildBreadCrumbs('Spring', '#spring')">Spring</a></li>
+				<li><a ng-href="#hibernate" ng-click="buildBreadCrumbs('Hibernate', '#hibernate')">Hibernate</a></li>
+				<li><a ng-href="#tools" ng-click="buildBreadCrumbs('Tools', '#tools')">Tools</a></li>
+				<li><a ng-href="#unitTesting" ng-click="buildBreadCrumbs('Unit Testing', '#unitTesting')">Unit Testing</a></li>
+				<li><a ng-href="#scala" ng-click="buildBreadCrumbs('Scala', '#scala')">Scala</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown">Build Tools <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a ng-href="#ant">Ant</a></li>
-						<li><a ng-href="#maven">Maven</a></li>
-						<li><a ng-href="#gradle">Graddle</a></li>
+						<li><a ng-href="#ant" ng-click="buildBreadCrumbs('Ant', '#ant')">Ant</a></li>
+						<li><a ng-href="#maven" ng-click="buildBreadCrumbs('Maven', '#maven')">Maven</a></li>
+						<li><a ng-href="#gradle" ng-click="buildBreadCrumbs('Gradle', '#gradle')">Graddle</a></li>
 					</ul>
 				</li>
 				
-				<li><a ng-href="#definitions">Definitions</a></li>
+				<li><a ng-href="#definitions" ng-click="buildBreadCrumbs('Definitions', '#definitions')">Definitions</a></li>
 			</ul>
 			
 			

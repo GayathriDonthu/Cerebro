@@ -16,6 +16,7 @@ app.config(function($routeProvider){
 	.when("/fileIO",{templateUrl : "fileIO.html",controller : "cerebroController"})
 	.when("/multiThreading",{templateUrl : "multiThreading.html",controller : "cerebroController"})
 	.when("/dynamicProxies",{templateUrl : "dynamicProxies.html",controller : "cerebroController"})
+	.when("/java8CollectionStreams",{templateUrl : "java8CollectionStreams.html",controller : "cerebroController"})
 	// core java end
 	
 	// hibernate start
@@ -41,13 +42,44 @@ app.config(function($routeProvider){
 	.when("/springAopJavaConfig",{templateUrl : "springAopJavaConfig.html",controller : "cerebroController"})
 	.when("/springAOPJavaConfigHelloWorld",{templateUrl : "springAOPJavaConfigHelloWorld.html",controller : "cerebroController"})
 	.when("/springSecurityJavaConfig",{templateUrl : "springSecurityJavaConfig.html",controller : "cerebroController"})
+	.when("/springSecurityFlow",{templateUrl : "springSecurityFlow.html",controller : "cerebroController"})
+	.when("/springMVC",{templateUrl : "springMVC.html",controller : "cerebroController"})
+	.when("/springMVCHelloWorldXml",{templateUrl : "springMVCHelloWorldXml.html",controller : "cerebroController"})
+	.when("/springMVCPropertiesFileXml",{templateUrl : "springMVCPropertiesFileXml.html",controller : "cerebroController"})
+	.when("/springMVCFormXml",{templateUrl : "springMVCFormXml.html",controller : "cerebroController"})
+	.when("/springMVCFormValidationXml",{templateUrl : "springMVCFormValidationXml.html",controller : "cerebroController"})
+	.when("/springMVCFwdXml",{templateUrl : "springMVCFwdXml.html",controller : "cerebroController"})
+	.when("/springMVCI18NXml",{templateUrl : "springMVCI18NXml.html",controller : "cerebroController"})
+	.when("/springMVCRedirectXml",{templateUrl : "springMVCRedirectXml.html",controller : "cerebroController"})
+	.when("/springMVCStaticFilesXml",{templateUrl : "springMVCStaticFilesXml.html",controller : "cerebroController"})
+	.when("/springMVCContentNegotiationXml",{templateUrl : "springMVCContentNegotiationXml.html",controller : "cerebroController"})
+	.when("/springMVCXmlJunitTesting",{templateUrl : "springMVCXmlJunitTesting.html",controller : "cerebroController"})
+	.when("/springMVCCustomConfigXml",{templateUrl : "springMVCCustomConfigXml.html",controller : "cerebroController"})
+	.when("/springCore",{templateUrl : "springCore.html",controller : "cerebroController"})
+	.when("/springORM",{templateUrl : "springORM.html",controller : "cerebroController"})
+	.when("/springORMHelloWorldXml",{templateUrl : "springORMHelloWorldXml.html",controller : "cerebroController"})
+	.when("/springMVCMultiConfigXml",{templateUrl : "springMVCMultiConfigXml.html",controller : "cerebroController"})
+	.when("/springBoot",{templateUrl : "springBoot.html",controller : "cerebroController"})
+	.when("/springBootHelloWorld",{templateUrl : "springBootHelloWorld.html",controller : "cerebroController"})
+	.when("/springBootJsonAndXml",{templateUrl : "springBootJsonAndXml.html",controller : "cerebroController"})
+	.when("/springBootJetty",{templateUrl : "springBootJetty.html",controller : "cerebroController"})
+	.when("/springJpa",{templateUrl : "springJpa.html",controller : "cerebroController"})
+	.when("/springMvcDataJpa",{templateUrl : "springMvcDataJpa.html",controller : "cerebroController"})
+	.when("/springMvcJpa",{templateUrl : "springMvcJpa.html",controller : "cerebroController"})
+	.when("/springBootFileUpload",{templateUrl : "springBootFileUpload.html",controller : "cerebroController"})
+	.when("/springDIHelloWorldXml",{templateUrl : "springDIHelloWorldXml.html",controller : "cerebroController"})
+	.when("/springInjectCollectionsXml",{templateUrl : "springInjectCollectionsXml.html",controller : "cerebroController"})
+	.when("/springDIConstructorInjectionXml",{templateUrl : "springDIConstructorInjectionXml.html",controller : "cerebroController"})
+	.when("/springDIAnnotations",{templateUrl : "springDIAnnotations.html",controller : "cerebroController"})
+	.when("/springDIJavaConfig",{templateUrl : "springDIJavaConfig.html",controller : "cerebroController"})
+	
 	// spring end
 	
 	// tools start
 	.when("/tools",{templateUrl : "tools.html",controller : "cerebroController"})
 	.when("/csv",{templateUrl : "csv.html",controller : "cerebroController"})
-	.when("/json",{templateUrl : "json.html",controller : "cerebroController"})
 	.when("/jacksonJson",{templateUrl : "jacksonJson.html",controller : "cerebroController"})
+	.when("/jacksonReadJson",{templateUrl : "readJson.html",controller : "cerebroController"})
 	.when("/openCSV",{templateUrl : "openCSV.html",controller : "cerebroController"})
 	.when("/dozer",{templateUrl : "dozer.html",controller : "cerebroController"})
 	// tools end
@@ -78,12 +110,19 @@ app.config(function($routeProvider){
 	.when("/scalaHelloWorldWithSbt",{templateUrl : "scalaHelloWorldWithSbt.html",controller : "cerebroController"})
 	// Scala end
 	
+	// Apache camel start
+	.when("/camel",{templateUrl : "camel.html",controller : "cerebroController"})
+	.when("/camelUnmarshalCsv",{templateUrl : "camelUnmarshalCsv.html",controller : "cerebroController"})
+	.when("/camelMarshalCsv",{templateUrl : "camelMarshalCsv.html",controller : "cerebroController"})
+	// Apache camel end
+	
 	// definitions start
-	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"});
+	.when("/definitions",{templateUrl : "definitions.html",controller : "definitionsController"})
+	.when("/addDefinitions",{templateUrl : "addDefinitions.html",controller : "definitionsController"});
 	// definitions end
 });
 
-var CerebroController = function($scope, $location, $anchorScroll){
+var CerebroController = function($scope, $location, $anchorScroll, breadCrumbsService){
 	
 	$scope.navigate = function(id){
 		$location.hash(id);
@@ -95,6 +134,19 @@ var CerebroController = function($scope, $location, $anchorScroll){
         return false;
 	};
 	
+	$scope.buildBreadCrumbs = function(name, link){
+		breadCrumbsService.addBreadCrumb(name, link);
+	};
+	
+	/*$scope.resetBreadCrumbs = function(){
+		breadCrumbsService.resetBreadCrumbs();
+	}*/
+	
+	$scope.popBreadCrumb = function(index){
+		breadCrumbsService.popBreadCrumb(index);
+	}
+	
+	$scope.breadCrumbs = breadCrumbsService.getNavigations();
 };
 
 var DefinitionsController = function($scope, $location, $anchorScroll, $http){
@@ -102,8 +154,14 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	var config = {"Content-Type": "application/json"};
 	
 	$scope.message = "Cerebro Definitions";
-	$scope.definitionsType;
 	$scope.definition = {'description':'','details':''};
+	$scope.definitionType = {
+		selected: null,
+		types : [
+		         {key: "Core Java", value: "Core Java"},	
+		         {key: "Apache Kafka", value: "Apache Kafka"},
+		         {key: "Groovy", value: "Groovy"}]
+	};
 	
 	var onSuccess = function(response){
 		console.log("onSuccess()");
@@ -118,7 +176,6 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 		$scope.addDefinitionStatus = "add success";
 		$scope.definition.description = '';
 		$scope.definition.details = '';
-		getDefinitions();
 	}
 	
 	var onAddError = function(){
@@ -126,31 +183,58 @@ var DefinitionsController = function($scope, $location, $anchorScroll, $http){
 	}
 	
 	var getDefinitions = function(){
-		$http.get("/definitions/"+$scope.definitionsType).then(onSuccess, onError);
-		$scope.message = $scope.definitionsType + definitionsMessage;
+		var defType = $scope.definitionType.selected;
+		$http.get("/definitions/"+defType).then(onSuccess, onError);
+		$scope.message = defType + definitionsMessage;
 	};
 	
 	var addDefintions = function(){
-		$http.post("/addDefinitions",$scope.definition,config).then(onAddSuccess, onAddError);
+		console.log($scope.definitionType.selected);
+		var defType = $scope.definitionType.selected;
+		$http.post("/addDefinitions/"+defType,$scope.definition,config).then(onAddSuccess, onAddError);
 	}
 	
 	$scope.getDefinitions = getDefinitions;
 	$scope.addDefintions = addDefintions;
 };
 
-	/*$scope.navigations = new Array();
-	$scope.navigations.push({"name": "Home","link": "cerebro.html#home"});
-	$scope.navigations.push({"name": "Core Java","link": "coreJava"});
-	$scope.navigations.push({"name": "Hibernate","link": "hibernate"});
-	$scope.navigations.push({"name": "Vacation","link": "#"});
+app.service('breadCrumbsService', function(){
+	var navigations = new Array();
+	var keys = new Array();
+	/*var isHomeAdded = false;*/
+	var prefix = "cerebro.html";
+	/*var homeKey = "Home";
+	var homeLink = prefix+"#home"*/
 	
-	$scope.buildBreadCrumbs = function(name, link){
-		link =  "cerebro.html#"+link;
-		$scope.navigations.push({name,link});
+	this.addBreadCrumb = function(name, link){
+		/*if(!isHomeAdded){
+			navigations.push({"name": homeKey,"link": homeLink});
+			keys.push(homeKey);
+		}*/
+		link = prefix + link;
+		if(keys.indexOf(name) == -1){
+			navigations.push({name, link});
+			keys.push(name);
+		}
+		/*isHomeAdded = true;*/
+	}
+	
+	this.getNavigations = function(){
+		return navigations; 
 	};
 	
-	console.log($scope.navigations);*/
+	/*this.resetBreadCrumbs = function(){
+		navigations = new Array();
+		isHomeAdded = false;
+	}*/
+	
+	this.popBreadCrumb = function(index){
+		index = index + 1;
+		navigations.splice(index, navigations.length);
+		keys.splice(index, keys.length);
+	}
+	
+});
 
-
-app.controller("cerebroController",["$scope", "$location", "$anchorScroll", CerebroController] );
+app.controller("cerebroController",["$scope", "$location", "$anchorScroll", "breadCrumbsService", CerebroController] );
 app.controller("definitionsController",["$scope", "$location", "$anchorScroll","$http", DefinitionsController]);

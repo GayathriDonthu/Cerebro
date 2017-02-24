@@ -1,0 +1,42 @@
+<!-- Body Content -->
+<div class="page-header">
+    <h3>Java 8 - Collection Streams</h3>      
+</div>
+
+<div class="panel panel-primary"><div class="panel-heading">Contents</div><div class="panel-body">
+	<ul>
+		<li><a ng-click="navigate(1)">Get byte array from String</a></li>
+	</ul>
+</div></div>
+
+<div class="panel panel-primary" id="1"><div class="panel-heading">Get byte array from String</div><div class="panel-body">
+<pre ><code>
+public void getbyteArrayFromString() {
+	String string = &quot;Hello World&quot;;
+
+	<em>// method 1</em>
+	byte[] byteArray1 = string.getBytes();
+	System.out.println(&quot;byteArray1: &quot; + byteArray1);
+	System.out.println(&quot;Arrays.toString(byteArray1): &quot; + Arrays.toString(byteArray1));
+
+	<em>//method 2</em>
+	byte[] byteArray2 = string.getBytes(Charset.forName(&quot;UTF-8&quot;));
+	System.out.println(&quot;byteArray2: &quot; + byteArray2);
+	System.out.println(&quot;Arrays.toString(byteArray2): &quot; + Arrays.toString(byteArray2));
+
+	<em>// method 3 - from java 7</em>
+	byte[] byteArray3 = string.getBytes(StandardCharsets.UTF_8);
+	System.out.println(&quot;byteArray3: &quot; + byteArray3);
+	System.out.println(&quot;Arrays.toString(byteArray3): &quot; + Arrays.toString(byteArray3));
+    }  	
+</code></pre>
+<em>Output</em>
+<pre><code>
+byteArray1: [B@1d56ce6a
+Arrays.toString(byteArray1): [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
+byteArray2: [B@5197848c
+Arrays.toString(byteArray2): [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
+byteArray3: [B@17f052a3
+Arrays.toString(byteArray3): [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]		
+</code></pre>  	
+</div></div>

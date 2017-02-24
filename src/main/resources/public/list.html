@@ -9,6 +9,10 @@
 		<li><a ng-click="navigate(3)">Convert List to Array</a></li>
 		<li><a ng-click="navigate(4)">Convert List to Comma Separated String</a></li>
 		<li><a ng-click="navigate(5)">Remove all nulls from list</a></li>
+		<li><a ng-click="navigate(7)">List1 Minus List2</a></li>
+		<li><a ng-click="navigate(8)">List1 Intersection List2</a></li>
+		<li><a ng-click="navigate(6)">Prepare sorted list sort by date using java 8 collection streams</a></li>
+		<li><a ng-click="navigate(9)">Get another list using properties of main object</a></li>
 	</ul>
 </div></div>
 
@@ -180,4 +184,181 @@ public void removeAllNullsFromList() {
 list: [a, null, b, null, c, null]
 after remove: [a, b, c]  	
   	</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="6"><div class="panel-heading" >Prepare sorted list sort by date using java 8 collection streams</div><div class="panel-body">
+Employee.java
+<pre><code>
+package core.java.collections.model;
+
+import java.time.LocalDate;
+
+public class Employee {
+
+    private LocalDate localDate;
+
+    public Employee() {
+    }
+
+    public Employee(LocalDate localDate) {
+	this.localDate = localDate;
+    }
+
+    public LocalDate getLocalDate() {
+	return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+	this.localDate = localDate;
+    }
+
+    @Override
+    public String toString() {
+	return &quot;[localDate=&quot; + localDate + &quot;]&quot;;
+    }
+}
+</code></pre>
+Test Method
+<pre><code>
+public void sortListByDate() {
+ List&lt;Employee&gt; employeeList = Arrays.asList(new Employee(LocalDate.of(2017, 04, 12)), new Employee(LocalDate.of(2017, 04, 13)), new Employee(LocalDate.of(2017, 01, 01)), new Employee(LocalDate.of(2017, 02, 10)), new Employee(LocalDate.of(2017, 03, 11)));
+ List&lt;Employee&gt; sortedList = employeeList.stream().sorted((e1, e2) -&gt; e1.getLocalDate().compareTo(e2.getLocalDate())).collect(Collectors.toList());
+ 
+ System.out.println(&quot;employeeList: &quot; + employeeList);
+ System.out.println(&quot;sortedList: &quot; + sortedList);
+} 	
+</code></pre>
+<em>Output</em>
+<pre><code>
+employeeList: [[localDate=2017-04-12], [localDate=2017-04-13], [localDate=2017-01-01], [localDate=2017-02-10], [localDate=2017-03-11]]
+sortedList: [[localDate=2017-01-01], [localDate=2017-02-10], [localDate=2017-03-11], [localDate=2017-04-12], [localDate=2017-04-13]]
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="7"><div class="panel-heading" >List1 Minus List2</div><div class="panel-body">
+<pre><code>
+public void list1MinusList2() {
+	List&lt;String&gt; list1 = new ArrayList&lt;&gt;();
+	list1.add(&quot;a&quot;);
+	list1.add(&quot;b&quot;);
+	list1.add(&quot;c&quot;);
+	list1.add(&quot;d&quot;);
+	list1.add(&quot;e&quot;);
+
+	List&lt;String&gt; list2 = new ArrayList&lt;&gt;();
+	list2.add(&quot;a&quot;);
+	list2.add(&quot;b&quot;);
+	list2.add(&quot;c&quot;);
+
+	System.out.println(&quot;list1: &quot; + list1);
+	System.out.println(&quot;list2: &quot; + list2);
+
+	list1.removeAll(list2);
+	System.out.println(&quot;After removeAll -&gt; list1: &quot; + list1);
+    }
+</code></pre>
+<em>Output</em>
+<pre><code>
+list1: [a, b, c, d, e]
+list2: [a, b, c]
+After removeAll -&gt; list1: [d, e]
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="8"><div class="panel-heading" >List1 Intersection List2</div><div class="panel-body">
+<pre><code>
+public void list1IntersectionList2() {
+	List&lt;String&gt; list1 = new ArrayList&lt;&gt;();
+	list1.add(&quot;a&quot;);
+	list1.add(&quot;b&quot;);
+	list1.add(&quot;c&quot;);
+	list1.add(&quot;d&quot;);
+	list1.add(&quot;e&quot;);
+
+	List&lt;String&gt; list2 = new ArrayList&lt;&gt;();
+	list2.add(&quot;a&quot;);
+	list2.add(&quot;b&quot;);
+	list2.add(&quot;c&quot;);
+
+	System.out.println(&quot;list1: &quot; + list1);
+	System.out.println(&quot;list2: &quot; + list2);
+
+	list1.retainAll(list2);
+	System.out.println(&quot;After retainAll -&gt; list1: &quot; + list1);
+    }
+</code></pre>
+<em>Output</em>
+<pre><code>
+list1: [a, b, c, d, e]
+list2: [a, b, c]
+After retainAll -&gt; list1: [a, b, c]
+</code></pre>
+</div></div>
+
+<div class="panel panel-primary" id="9"><div class="panel-heading" >Get another list using properties of main object</div><div class="panel-body">
+Employee.java
+<pre><code>
+package core.java.collections.model;
+
+import java.time.LocalDate;
+
+public class Employee {
+
+    private LocalDate localDate;
+    private String firstName;
+
+    public Employee() {
+    }
+
+    public Employee(LocalDate localDate) {
+	this.localDate = localDate;
+    }
+
+    public Employee(LocalDate localDate, String firstName) {
+	this.localDate = localDate;
+	this.firstName = firstName;
+    }
+
+    public LocalDate getLocalDate() {
+	return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+	this.localDate = localDate;
+    }
+
+    public String getFirstName() {
+	return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+	this.firstName = firstName;
+    }
+
+    @Override
+    public String toString() {
+	return &quot;[localDate=&quot; + localDate + &quot;]&quot;;
+    }
+}
+</code></pre>
+Test Method:
+<pre><code>
+public void getFirstNameListFromEmployee() {
+	List&lt;Employee&gt; employeeList = Arrays.asList(new Employee(LocalDate.of(2017, 04, 12), &quot;john&quot;),
+		new Employee(LocalDate.of(2017, 04, 13), &quot;jack&quot;), new Employee(LocalDate.of(2017, 01, 01), &quot;jill&quot;),
+		new Employee(LocalDate.of(2017, 02, 10), &quot;mahesh&quot;), new Employee(LocalDate.of(2017, 03, 11), &quot;suresh&quot;));
+	<em>// using method reference</em>
+	List&lt;String&gt; namesList = employeeList.stream().map(Employee::getFirstName).collect(Collectors.toList());
+	System.out.println(&quot;namesList: &quot; + namesList);
+	
+	<em>// using lambda expression</em>
+	List&lt;String&gt; namesList2 = employeeList.stream().map(employee -&gt; employee.getFirstName()).collect(Collectors.toList());
+	System.out.println(&quot;namesList2: &quot; + namesList2);
+    }
+</code></pre>
+<em>Output</em>
+<pre><code>
+namesList: [john, jack, jill, mahesh, suresh]
+namesList2: [john, jack, jill, mahesh, suresh]
+</code></pre>
 </div></div>
